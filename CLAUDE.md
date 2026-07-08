@@ -7,30 +7,32 @@
 ```
 .
 ├── combination-finder.html   # 主页面（HTML + CSS + JS）
-├── server.js                 # 最小 Node.js HTTP 服务（Railway 部署用）
-├── package.json              # Node 项目配置，start 脚本启动 server.js
+├── index.html                # combination-finder.html 的副本，GitHub Pages 入口
 └── CLAUDE.md
 ```
 
 ## 技术栈
 
-- **前端**：纯 HTML/CSS/JS，零外部依赖，单文件自包含
-- **算法**：迭代 DFS + 回溯，带剪枝（排序后超过目标值的分支直接跳过）
-- **后端**：`server.js` 是一个极简 Node.js HTTP 服务，仅用内置 `http`/`fs`/`path` 模块，预加载 HTML 到内存并缓存 5 秒
+- 纯 HTML/CSS/JS，零外部依赖，单文件自包含
+- 算法：迭代 DFS + 回溯，带剪枝（排序后超过目标值的分支直接跳过）
 
 ## 部署
+
+### 生产环境
+
+GitHub Pages：`https://fuqing556.github.io/jisuan/`
+
+- Settings → Pages → Source: Deploy from branch → `master` / `/ (root)`
+- `index.html` 作为入口页，与 `combination-finder.html` 内容一致
 
 ### 本地开发
 
 直接浏览器打开 `combination-finder.html` 即可，无需服务器。
 
-或本地启动服务器：`node server.js`，然后访问 `http://localhost:3000`。
+## 历史
 
-### Railway
-
-1. 项目已关联 GitHub 仓库 `FuQing556/jisuan`
-2. Railway 检测 `package.json` → 识别为 Node.js → 执行 `npm start`
-3. `server.js` 监听 `process.env.PORT`（Railway 自动注入），绑定 `0.0.0.0`
+- Railway 部署已废弃（国内 IP 被 GFW 封锁）。相关文件 `server.js`、`package.json` 已删除。
+- 曾尝试 Cloudflare Pages / Workers，因 workers.dev 域名在国内同样被墙，放弃。
 
 ## 关键配置
 
